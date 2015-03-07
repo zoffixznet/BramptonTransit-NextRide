@@ -54,6 +54,8 @@ sub get_next_ride {
     );
     $mech->click_button( name => 'ctl00$mainPanel$btnGetRealtimeSchedule' );
 
+    # return qw/Mock output when busses aren't running/;
+
     return grep length,
         Mojo::DOM->new( $mech->content )
         ->find('td + td')->map('text')->each

@@ -18,13 +18,6 @@ my @stops_to_display = $q->{stop}
     : qw/3143  3114  1768  1506  2650/;
 
 my $bt = BT::NextRide->new;
-my %stops_data;
-for my $stop ( @stops_to_display ) {
-    $stops_data{ $stop } = $bt->set_stop( $stop )->get_next_ride;
-}
-
-use Acme::Dump::And::Dumper;
-die DnD [ \%stops_data ];
 
 my %data = (
     stops => [
@@ -32,14 +25,14 @@ my %data = (
             stop  => $_,
             times => [
                 map +{ time => $_ },
-                    $stops_data{ $_ },
+                    $bt->set_stop( $_ )->get_next_ride,
             ],
         }, @stops_to_display,
     ],
 );
 
 if ( $q->{ajax} ) {
-    print "Content-type: application/json \n\n",
+    print "Content-type: application/json\n\n",
         encode_json \%data;
 }
 else {
