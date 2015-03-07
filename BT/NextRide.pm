@@ -30,7 +30,7 @@ has _mech => (
 
 sub init {
     my $self = shift;
-    $self->_mech->get($NEXT_STOP_PAGE_URL)
+    $self->_mech->get($NEXT_STOP_PAGE_URL);
     $self->_has_cache(1);
     return $self;
 }

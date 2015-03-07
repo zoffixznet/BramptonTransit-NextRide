@@ -9,6 +9,7 @@ use CGI::Carp qw/fatalsToBrowser/;
 use HTML::Template;
 use JSON::MaybeXS;
 
+# Dist modules below
 use BT::NextRide;
 
 my $q = {Vars()};
@@ -17,6 +18,13 @@ my @stops_to_display = $q->{stop}
     : qw/3143  3114  1768  1506  2650/;
 
 my $bt = BT::NextRide->new;
+my %stops_data;
+for my $stop ( @stops_to_display ) {
+    $stops_data{ $stop } = $bt->set_stop( $stop )->get_next_ride;
+}
+
+use Acme::Dump::And::Dumper;
+die DnD [ \%stops_data ];
 
 my %data = (
     stops => [
@@ -24,7 +32,7 @@ my %data = (
             stop  => $_,
             times => [
                 map +{ time => $_ },
-                    $bt->set_stop( $_ )->get_next_ride,
+                    $stops_data{ $_ },
             ],
         }, @stops_to_display,
     ],
