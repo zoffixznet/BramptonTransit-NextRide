@@ -44,7 +44,7 @@ sub set_stop {
 sub get_next_ride {
     my $self = shift;
     my $mech = $self->_mech;
-
+return qw/Mock output when busses aren't running/;
     $self->init
         unless $self->_has_cache;
 
@@ -56,9 +56,11 @@ sub get_next_ride {
 
     # return qw/Mock output when busses aren't running/;
 
-    return grep length,
+    my @times = grep length,
         Mojo::DOM->new( $mech->content )
-        ->find('td + td')->map('text')->each
+        ->find('td + td')->map('text')->each;
+
+    return @times ? @times : 'No service';
 }
 
 

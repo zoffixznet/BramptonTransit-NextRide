@@ -1,8 +1,9 @@
-html, body, ul, li, a {
+html, body, ul, li, a, form {
   margin: 0;
   padding: 0; }
 
-a {
+a,
+input[type="submit"] {
   color: #ffe9cc;
   text-decoration: none;
   padding: .2em .5em;
@@ -11,6 +12,12 @@ a {
   border-radius: 6px;
   background: linear-gradient(#ffa635, #FF9002, #e78200); }
 
+a:hover,
+input[type="submit"]:hover,
+a:active,
+input[type="submit"]:active {
+  background: #ffa635; }
+
 html {
   color: #222;
   overflow-y: scroll;
@@ -18,18 +25,42 @@ html {
   background: linear-gradient(to bottom right, #ffc780, #FF9002, #ce7300); }
 
 body {
-  font: 1.5em "Trebuchet MS", Arial, Helvetica, sans-serif;
-  height: 100%;
-  padding: 0 10%; }
+  font: 2.2em "Trebuchet MS", Arial, Helvetica, sans-serif;
+  height: 100%; }
   body > ul {
-    padding-top: 2em; }
+    padding-top: 2em;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; }
+    body > ul:after {
+      content: " ";
+      display: block;
+      clear: both; }
     body > ul > li {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 50%;
       float: left;
-      padding-right: 20px; }
+      padding-left: 5%;
+      padding-right: 5%;
+      margin-bottom: 1em; }
 
 ul {
   list-style: none; }
   ul ul {
     margin: 0.5em 0; }
+
+input {
+  font-size: 1em; }
+
+input[type="text"] {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 50%;
+  float: left;
+  padding-left: 5%;
+  padding-right: 5%; }
 
 /*# sourceMappingURL=style.css.map */
