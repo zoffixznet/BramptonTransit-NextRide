@@ -5,3 +5,17 @@
 
 <link rel="stylesheet" type="text/css" href="/main.css" media="screen,tv,projection">
 
+<ul>
+    <tmpl_loop name='stops'>
+        <li>
+            <strong><tmpl_var name='stop' escape='html'></strong>
+            <ul>
+                <tmpl_loop name='times'>
+                    <li>
+                        <tmpl_var name='time' escape='html'>
+                    </li>
+                </tmpl_loop>
+            </ul>
+        </li>
+    </tmpl_loop>
+</ul>
