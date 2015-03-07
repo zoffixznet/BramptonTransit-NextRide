@@ -1,0 +1,59 @@
+$bg: #FF9002;
+$bg-dark: #FE1600;
+$text-colour: #222;
+$link-colour: scale-color($bg, $lightness: 80%);
+$border-colour: scale-color($bg, $lightness: -20%);
+
+html, body, ul, li, a {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: $link-colour;
+    text-decoration: none;
+    padding: .2em .5em;
+    text-align: center;
+    border: 1px solid $border-colour;
+    border-radius: 6px;
+    background: linear-gradient(
+        scale-color($bg, $lightness: 20%),
+        $bg,
+        scale-color($bg, $lightness: -10%)
+    );
+}
+
+html {
+    color: $text-colour;
+    overflow-y: scroll;
+    height: 100%;
+    background: linear-gradient(
+        to bottom right,
+        scale-color($bg, $lightness: 50%),
+        $bg,
+        scale-color($bg, $lightness: -20%)
+    );
+}
+
+body {
+    font: 1.5em "Trebuchet MS", Arial, Helvetica, sans-serif;
+    height: 100%;
+    padding: 0 10%;
+
+    > ul {
+        padding-top: 2em;
+
+        > li {
+            float: left;
+            padding-right: 20px;
+        }
+    }
+}
+
+ul {
+    list-style: none;
+
+    ul {
+        margin: 0.5em 0;
+    }
+}

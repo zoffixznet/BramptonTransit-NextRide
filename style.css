@@ -1,0 +1,35 @@
+html, body, ul, li, a {
+  margin: 0;
+  padding: 0; }
+
+a {
+  color: #ffe9cc;
+  text-decoration: none;
+  padding: .2em .5em;
+  text-align: center;
+  border: 1px solid #ce7300;
+  border-radius: 6px;
+  background: linear-gradient(#ffa635, #FF9002, #e78200); }
+
+html {
+  color: #222;
+  overflow-y: scroll;
+  height: 100%;
+  background: linear-gradient(to bottom right, #ffc780, #FF9002, #ce7300); }
+
+body {
+  font: 1.5em "Trebuchet MS", Arial, Helvetica, sans-serif;
+  height: 100%;
+  padding: 0 10%; }
+  body > ul {
+    padding-top: 2em; }
+    body > ul > li {
+      float: left;
+      padding-right: 20px; }
+
+ul {
+  list-style: none; }
+  ul ul {
+    margin: 0.5em 0; }
+
+/*# sourceMappingURL=style.css.map */

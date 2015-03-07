@@ -17,3 +17,6 @@ nytprof.out
 /pm_to_blib
 *.o
 *.bs
+style.css.map
+.sass-cache/
+output_for_styling.html
