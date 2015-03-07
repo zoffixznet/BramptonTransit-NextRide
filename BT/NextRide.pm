@@ -28,6 +28,13 @@ has _mech => (
     },
 );
 
+sub init {
+    my $self = shift;
+    $self->_mech->get($NEXT_STOP_PAGE_URL)
+    $self->_has_cache(1);
+    return $self;
+}
+
 sub set_stop {
     my ( $self, $stop ) = @_;
     $self->_stop( $stop );
@@ -38,9 +45,8 @@ sub get_next_ride {
     my $self = shift;
     my $mech = $self->_mech;
 
-    $mech->get($NEXT_STOP_PAGE_URL)
+    $self->init
         unless $self->_has_cache;
-    $self->_has_cache(1);
 
     $mech->form_number(1);
     $mech->set_fields(

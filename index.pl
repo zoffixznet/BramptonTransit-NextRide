@@ -42,6 +42,6 @@ else {
     $t->param( %data );
 
     print
-    # "Content-type: text/html\n\n",
+    "Content-type: text/html\n\n",
     $t->output;
 }
