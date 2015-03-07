@@ -8,8 +8,13 @@ use namespace::clean;
 
 my $NEXT_STOP_PAGE_URL = 'http://nextride.brampton.ca/mob/SearchBy.aspx';
 
-has stop => (
+has _stop => (
     is => 'rw',
+);
+
+has _has_cache => (
+    is => 'rw',
+    default => sub { 0 },
 );
 
 has _mech => (
@@ -23,19 +28,28 @@ has _mech => (
     },
 );
 
+sub set_stop {
+    my ( $self, $stop ) = @_;
+    $self->_stop( $stop );
+    return $self;
+}
+
 sub get_next_ride {
     my $self = shift;
     my $mech = $self->_mech;
 
-    $mech->get($NEXT_STOP_PAGE_URL);
+    $mech->get($NEXT_STOP_PAGE_URL)
+        unless $self->_has_cache;
+    $self->_has_cache(1);
+
     $mech->form_number(1);
     $mech->set_fields(
-        'ctl00$mainPanel$searchbyStop$txtStop' => $self->stop,
+        'ctl00$mainPanel$searchbyStop$txtStop' => $self->_stop,
     );
     $mech->click_button( name => 'ctl00$mainPanel$btnGetRealtimeSchedule' );
 
     return grep length,
-        Mojo::DOM->new( $content )
+        Mojo::DOM->new( $mech->content )
         ->find('td + td')->map('text')->each
 }
 
