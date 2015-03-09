@@ -44,7 +44,7 @@ sub set_stop {
 sub get_next_ride {
     my $self = shift;
     my $mech = $self->_mech;
-return qw/Mock output when busses aren't running/;
+# return qw/Mock output when busses aren't running/;
     $self->init
         unless $self->_has_cache;
 
@@ -55,6 +55,9 @@ return qw/Mock output when busses aren't running/;
     $mech->click_button( name => 'ctl00$mainPanel$btnGetRealtimeSchedule' );
 
     # return qw/Mock output when busses aren't running/;
+
+    return 'Stop not found'
+        if $mech->content =~ /No stop found for given stop code/;
 
     my @times = grep length,
         Mojo::DOM->new( $mech->content )
