@@ -25,7 +25,7 @@ my %data = (
             stop  => $_,
             times => [
                 map +{ time => $_ },
-                    $bt->set_stop( $_ )->get_next_ride,
+                    $bt->get_next_ride( $_ ),
             ],
         }, @stops_to_display,
     ],
