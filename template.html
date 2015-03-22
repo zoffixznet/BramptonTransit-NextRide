@@ -3,7 +3,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Mega BT</title>
 
-<link rel="stylesheet" type="text/css" href="/style.css" media="screen,tv,projection">
+<meta name="viewport" content="width=device-width, initial-scale=.5">
+
+<link rel="stylesheet" type="text/css" href="style.css?v=4" media="screen,tv,projection">
 
 <ul>
     <tmpl_loop name='stops'>
@@ -25,8 +27,10 @@
             <input type="submit" value="Lookup">
         </div>
         </form>
-    </li>
-    <li>
-        <a href="/">Back to full</a>
+
+        <a href="/" id="back_to_full">Back to full</a>
     </li>
 </ul>
+
+<script src="JS/jquery-2.1.3.min.js"></script>
+<script src="JS/main.js"></script>

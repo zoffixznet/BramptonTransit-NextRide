@@ -50,7 +50,11 @@ html {
         scale-color($bg, $lightness: 50%),
         $bg,
         scale-color($bg, $lightness: -20%)
-    )
+    );
+}
+
+html, body, body > ul {
+    width: 100%;
 }
 
 body {
@@ -81,5 +85,17 @@ input {
 }
 
 input[type="text"] {
-    @include span(1);
+    @include span(2);
+    display: block;
+}
+
+input[type="submit"],
+#back_to_full {
+    @include span(2);
+    margin-top: .5em;
+    display: block;
+}
+
+#back_to_full {
+    margin-top: 1em;
 }

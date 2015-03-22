@@ -22,6 +22,11 @@ has _mech => (
 sub get_next_ride {
     my ( $self, $stop ) = @_;
 
+    # this is test data, to avoid requestes
+    # return ( 'Due', '12:04 PM',
+        # ( rand > .5 ? () : ('12:19 PM', '12:40 PM', '01:04 PM', ) )
+    # );
+
     my $mech = $self->_mech;
 
     $mech->get( $NEXT_STOP_PAGE_URL . $stop );
